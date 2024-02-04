@@ -8,11 +8,13 @@ import { httpInterceptorProviders } from './auth/http.interceptor';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
