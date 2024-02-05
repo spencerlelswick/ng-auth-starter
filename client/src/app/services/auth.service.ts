@@ -30,18 +30,13 @@ export class AuthService {
   }
 
   register(userData: IUser): Observable<any> {
-    console.log(userData);
-    return new Observable()
-
-    // return this.http.post(
-    //   AUTH_API + 'signup',
-    //   {
-    //     userData.name,
-    //     email,
-    //     password,
-    //   },
-    //   httpOptions
-    // );
+    return this.http.post(
+      AUTH_API + 'signup',
+      {
+        userData
+      },
+      httpOptions
+    );
   }
 
   logout($event?: Event): any {
