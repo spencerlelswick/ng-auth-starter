@@ -14,6 +14,8 @@ const httpOptions = {
 })
 export class AuthService {
 
+  public isAuthenticated = true;
+
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
@@ -42,7 +44,11 @@ export class AuthService {
     // );
   }
 
-  logout(): Observable<any> {
+  logout($event?: Event): any {
+    if ($event) {
+      $event.preventDefault
+    }
+
     return this.http.post(AUTH_API + 'signout', {}, httpOptions);
   }
 }

@@ -12,6 +12,8 @@ export class ModalService {
   constructor() { }
 
   register(id: string) {
+    console.log('registering modal: ', id);
+
     this.modals.push({
       id,
       visible: false
