@@ -81,7 +81,7 @@ export class RegisterComponent {
       },
       error: err => {
         console.log(err);
-        this.alertMsg = (err.message)
+        this.alertMsg = (err.error.message)
         this.alertColor = 'red'
         this.inSubmission = false
       }

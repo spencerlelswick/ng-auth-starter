@@ -9,10 +9,6 @@ const morgan = require("morgan")
 
 const app = express();
 
-
-const authRouter = require('./routes/auth.routes')
-const userRouter = require('./routes/user.routes')
-
 var corsOptions = {
   credentials: true,
   origin: ['http://localhost:4200'],

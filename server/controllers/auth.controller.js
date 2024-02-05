@@ -9,20 +9,24 @@ const AUTH_SECRET = dotenv.parsed.AUTH_SECRET
 
 exports.signup = (req, res) => {
   const user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    age: req.body.age,
-    password: bcrypt.hashSync(req.body.password, 8),
-    phoneNumber: req.body.phoneNumber
+    name: req.body.userData.name,
+    email: req.body.userData.email,
+    age: req.body.userData.age,
+    password: bcrypt.hashSync(req.body.userData.password, 8),
+    phoneNumber: req.body.userData.phoneNumber
   });
 
-  user.save((err, user) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
+  console.log('saving user ', user);
 
-    res.send({ message: "User was registered successfully!" });
+  user.save().then(response => {
+    console.log(response);
+    console.log('User successfully registered.');
+    res.status(200).send({ message: "User was registered successfully!" });
+    return
+  }).catch(err => {
+    console.log('error ', err);
+    res.status(500).send({ message: err });
+    return;
   })
 }
 
