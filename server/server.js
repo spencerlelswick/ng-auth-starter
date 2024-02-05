@@ -1,19 +1,26 @@
 const express = require("express");
 const cors = require("cors");
-require('./routes/auth.routes')
-require('./routes/user.routes')
 const cookieSession = require("cookie-session");
 const dotenv = require('dotenv').config()
 const DATABASE_URI = dotenv.parsed.DATABASE_URI
 const COOKIE_SECRET = dotenv.parsed.COOKIE_SECRET
 
+const morgan = require("morgan")
+
 const app = express();
 
+
+const authRouter = require('./routes/auth.routes')
+const userRouter = require('./routes/user.routes')
+
 var corsOptions = {
-  origin: "http://localhost:4200"
+  credentials: true,
+  origin: ['http://localhost:4200'],
 };
 
 app.use(cors(corsOptions));
+
+app.use(morgan("dev"));
 
 app.use(express.json());
 
@@ -28,7 +35,6 @@ app.use(
 );
 
 const db = require("./models");
-const Role = db.role;
 
 db.mongoose
   .connect(DATABASE_URI, {})
@@ -44,6 +50,9 @@ db.mongoose
 app.get("/", (req, res) => {
   res.json({ message: "test" });
 });
+
+require('./routes/user.routes')(app)
+require('./routes/auth.routes')(app)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
