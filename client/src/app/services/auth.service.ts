@@ -18,12 +18,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
+  login(userData: IUser): Observable<any> {
     return this.http.post(
       AUTH_API + 'signin',
       {
-        username,
-        password,
+        userData
       },
       httpOptions
     )

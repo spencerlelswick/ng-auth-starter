@@ -59,19 +59,6 @@ export class RegisterComponent {
     this.alertColor = 'green'
     this.inSubmission = true
 
-    //   try {
-    //     await this.auth.register(this.registerForm.value as IUser)
-    //   } catch (e) {
-    //     console.error(e)
-    //     this.alertMsg = 'An unexpected error occurred. Please try again.'
-    //     this.alertColor = 'red'
-    //     this.inSubmission = false
-    //     return
-    //   }
-
-    //   this.alertMsg = 'Success! Account has been created.'
-    //   this.alertColor = 'green'
-
     this.auth.register(this.registerForm.value as IUser).subscribe({
       next: data => {
         console.log(data);
@@ -86,8 +73,5 @@ export class RegisterComponent {
         this.inSubmission = false
       }
     })
-
   }
-
-
 }
