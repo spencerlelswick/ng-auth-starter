@@ -26,18 +26,18 @@ export class LoginComponent {
     Validators.pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/)
   ])
 
-  registerForm = new FormGroup({
+  loginForm = new FormGroup({
     email: this.email,
     password: this.password,
   }, [])
 
-  register(): void {
+  login(): void {
     this.showAlert = true
     this.alertMsg = 'Attempting to log in...'
     this.alertColor = 'blue'
     this.inSubmission = true
 
-    this.auth.login(this.registerForm.value as IUser).subscribe({
+    this.auth.login(this.loginForm.value as IUser).subscribe({
       next: data => {
         console.log(data);
         this.alertMsg = 'Success!'

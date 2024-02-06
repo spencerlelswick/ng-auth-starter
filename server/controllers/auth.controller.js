@@ -32,20 +32,16 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
   User.findOne({
-    username: req.body.username,
+    email: req.body.userData.email,
   })
-    .exec((err, user) => {
-      if (err) {
-        res.status(500).send({ message: err });
-        return;
-      }
+    .then(user => {
 
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }
 
       var passwordIsValid = bcrypt.compareSync(
-        req.body.password,
+        req.body.userData.password,
         user.password
       );
 
@@ -60,11 +56,14 @@ exports.signin = (req, res) => {
           allowInsecureKeySizes: true,
           expiresIn: 86400, // 24 hours
         });
-
       req.session.token = token;
-
       res.status(200).send(user);
-    });
+    })
+    .catch(err => {
+      console.log('error ', err);
+      res.status(500).send({ message: err });
+      return;
+    })
 };
 
 exports.signout = async (req, res) => {
