@@ -52,7 +52,7 @@ export class AuthService {
     if ($event) {
       $event.preventDefault
     }
-
+    this.storage.clean()
     return this.http.post(AUTH_API + 'signout', {}, httpOptions);
   }
 }
