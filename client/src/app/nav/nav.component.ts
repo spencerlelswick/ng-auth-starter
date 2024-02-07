@@ -11,7 +11,9 @@ export class NavComponent {
   public isAuthenticated = false
 
   constructor(public modal: ModalService, public auth: AuthService) {
-    // TODO check auth
+    this.auth.isAuthenticated$.subscribe(status => {
+      this.isAuthenticated = status
+    })
   }
 
   openModal($event: Event) {
