@@ -11,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
+import { OneComponent } from './one/one.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavComponent,
-    AboutComponent
+    AboutComponent,
+    OneComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { OneComponent } from './one/one.component';
+import { AuthGuard } from './auth.guard';
+
 
 const routes: Routes = [
   {
@@ -11,7 +14,13 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
-  }
+  },
+  {
+    path: 'one',
+    component: OneComponent,
+    canActivate: [AuthGuard]
+  },
+
 ];
 
 @NgModule({

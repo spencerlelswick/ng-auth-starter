@@ -19,7 +19,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private storage: StorageService) {
 
-    this.isAuthenticated$
   }
 
   login(userData: IUser): Observable<any> {
@@ -31,6 +30,8 @@ export class AuthService {
       httpOptions
     )
     res.subscribe(user => {
+      console.log(user);
+
       setTimeout(() => {
         this.isAuthenticated$.next(true)
       }, 1000);
