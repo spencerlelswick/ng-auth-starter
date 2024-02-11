@@ -12,6 +12,7 @@ import { NavComponent } from './nav/nav.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { OneComponent } from './one/one.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { OneComponent } from './one/one.component';
     HomeComponent,
     NavComponent,
     AboutComponent,
-    OneComponent
+    OneComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
