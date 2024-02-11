@@ -16,11 +16,10 @@
         </li>
         <ng-template #authLinks>
           <li>
-            <a class="px-2" routerLink="/one" routerLinkActive="text-indigo-400"
-              [routerLinkActiveOptions]="{exact:true}" [queryParams]="{sort: '1'}">One</a>
+            <a class="px-2" routerLink="/one" routerLinkActive="text-green-400">One</a>
           </li>
           <li>
-            <a class="px-2" routerLink="/two" routerLinkActive="text-indigo-400">Two</a>
+            <a class="px-2" routerLink="/two" routerLinkActive="text-green-400">Two</a>
           </li>
           <li>
             <a class="px-2" href="#" (click)="auth.logout($event)">Logout</a>
